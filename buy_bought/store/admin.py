@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Product
 
-# Register your models here.
+# Allow admins to manage products through
+# the default administrative module interface.
+admin.site.register(Product)
