@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <!--
+    Conventional URLs would also work, but using the url tag is the recommended practice.
+    One of the reasons is to mitigate the necessity to change every occurrence of a URL
+    when its route changes by referencing its name instead.
+  -->
+  <form action="{% url 'products' %}" method="post">
+    <!--
+      Inserts a hidden input with a CSRF (Cross Site Resource Forgery) token for Django use.
+      This is a security measure required by Django.
+    -->
+    {% csrf_token %}
+    
+    <div>
+      <label for="name">Name</label>
+      <input id="name" type="text" name="name" placeholder="Name">
+    </div>
+    <div>
+      <label for="price">Price</label>
+      <input id="price" type="number" name="price" placeholder="0.00">
+    </div>
+
+    <button type="submit">Confirm</button>
+  </form>
+{% endblock %}
